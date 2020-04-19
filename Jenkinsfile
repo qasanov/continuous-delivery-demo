@@ -1,9 +1,7 @@
 pipeline {
      agent any
 
-     triggers {
-          pollSCM('* * * * *')
-     }
+
 
      stages {
           stage("Compile") {
@@ -42,9 +40,12 @@ pipeline {
 
 
           stage('SonarQube analysis') {
-              withSonarQubeEnv() { // Will pick the global server connection you have configured
-                sh './gradlew sonarqube'
+              steps{
+                  withSonarQubeEnv() { // Will pick the global server connection you have configured
+                        sh './gradlew sonarqube'
+                  }
               }
+
             }
      }
 }
