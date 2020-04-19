@@ -2,6 +2,9 @@ package com.qasanov.continuousdeliverydemo.service;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Calculator service interface implementation
+ */
 @Service
 public class CalculatorServiceImpl implements CalculatorService{
 

@@ -11,7 +11,11 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
+
 apply plugin : "jacoco"
+apply plugin: "checkstyle"
+
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
