@@ -20,4 +20,10 @@ public class CalculatorServiceImplTest {
         int sum = calculatorService.add(2, 3);
         assertNotEquals(4,sum);
     }
+
+    @Test
+    void zeroSum() {
+        int sum = calculatorService.add(0, 0);
+        assertEquals(0,sum);
+    }
 }
