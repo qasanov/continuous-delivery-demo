@@ -16,6 +16,11 @@ repositories {
 apply plugin : "jacoco"
 apply plugin: "checkstyle"
 
+sonarqube {
+	properties {
+		property 'sonar.organization', 'qasanov'
+	}
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
