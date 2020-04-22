@@ -1,8 +1,5 @@
 pipeline {
      agent any
-
-
-
      stages {
           stage("Compile") {
                steps {
@@ -37,6 +34,17 @@ pipeline {
                     ])
                }
           }
+
+          stage('SonarQube analysis') {
+                      steps {
+                          withSonarQubeEnv('qasanovSonarCloud') {
+                              // Optionally use a Maven environment you've configured already
+                              withMaven(maven:'Maven 3.5') {
+                                  sh './gradlew sonarqube'
+                              }
+                          }
+                      }
+                  }
 
 
 
