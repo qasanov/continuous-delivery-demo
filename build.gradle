@@ -19,7 +19,8 @@ apply plugin: "checkstyle"
 sonarqube {
 	properties {
 		property 'sonar.organization', 'qasanov'
-		property 'sonar.jacoco.reportPath', "${project.buildDir}/jacoco/test.exec"
+		property 'sonar.coverage.jacoco.xmlReportPaths', "${buildDir}/reports/jacoco.xml"
+
 	}
 }
 
@@ -41,5 +42,12 @@ jacocoTestCoverageVerification {
 				minimum = 0.2
 			}
 		}
+	}
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		xml.destination file("${buildDir}/reports/jacoco.xml")
 	}
 }

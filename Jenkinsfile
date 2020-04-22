@@ -43,7 +43,7 @@ pipeline {
           stage('SonarQube analysis') {
                       steps {
                           withSonarQubeEnv('qasanovSonarCloud') {
-                                  sh './gradlew sonarqube'
+                                  sh './gradlew jacocoTestReport sonarqube'
                           }
                       }
                   }
