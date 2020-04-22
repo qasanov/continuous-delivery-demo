@@ -19,6 +19,7 @@ apply plugin: "checkstyle"
 sonarqube {
 	properties {
 		property 'sonar.organization', 'qasanov'
+		property 'sonar.jacoco.reportPath', "${buildDir}/jacoco/test.exec"
 	}
 }
 
