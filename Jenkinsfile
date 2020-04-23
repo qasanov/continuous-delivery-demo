@@ -41,11 +41,18 @@ pipeline {
           }
 
           stage('SonarQube analysis') {
-                      steps {
-                          withSonarQubeEnv('qasanovSonarCloud') {
-                                  sh './gradlew jacocoTestReport sonarqube'
-                          }
-                      }
+              steps {
+                  withSonarQubeEnv('qasanovSonarCloud') {
+                          sh './gradlew jacocoTestReport sonarqube'
                   }
+              }
+          }
+
+          stage("Docker build") {
+               steps {
+                    sh "docker build -t qasanov/continuous-delivery-demo ."
+               }
+          }
+
      }
 }
