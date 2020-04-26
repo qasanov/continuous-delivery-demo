@@ -8,6 +8,7 @@ pipeline {
      environment {
         registry = "qasanov/continuous-delivery-demo"
         registryCredential = 'qasanovDockerHub'
+        dockerImage = ''
      }
 
      stages {
@@ -63,9 +64,19 @@ pipeline {
                steps {
                    // sh "docker build -t qasanov/continuous-delivery-demo ."
                    script {
-                       docker.build registry + ":$BUILD_NUMBER"
+                       dockerImage = docker.build registry + ":$BUILD_NUMBER"
                    }
                }
+          }
+
+          stage("Docker push to Registry"){
+                steps{
+                    script{
+                        docker.withRegistry( '', registryCredential ) {
+                                dockerImage.push()
+                        }
+                    }
+                }
           }
 
      }
