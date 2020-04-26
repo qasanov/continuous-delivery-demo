@@ -5,6 +5,11 @@ pipeline {
            pollSCM('* * * * *')
       }
 
+     environment {
+        registry = "qasanov/continuous-delivery-demo"
+        registryCredential = 'qasanovDockerHub'
+     }
+
      stages {
           stage("Compile") {
                steps {
@@ -56,7 +61,10 @@ pipeline {
 
           stage("Docker build") {
                steps {
-                    sh "docker build -t qasanov/continuous-delivery-demo ."
+                   // sh "docker build -t qasanov/continuous-delivery-demo ."
+                   script {
+                       docker.build registry + ":$BUILD_NUMBER"
+                   }
                }
           }
 
