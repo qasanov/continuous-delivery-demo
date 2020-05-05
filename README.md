@@ -1,7 +1,8 @@
 # continuous-delivery-demo
 Demo of  continuous delivery using  Jenkins
 
-#Prerequisites
+# Prerequisites
+
 1. Install Jenkins plugins
     - HTML Publisher
     - SonarQube Scanner
